@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#outer
+			{
+				height: 150px;
+				width: 535px;
+				background: #0c0604;
+				color: #ff1111;
+				font-size: 120px;
+				padding-left: 25px;
+				line-height: 150px;
+				border:10px solid #8f8d8b;
+				border-radius: 10px;
+				margin: 200px 0px 0px 400px;
+				
+			}
+			#line
+			{
+				height: 15px;
+				width: 200px;
+				background: #0c0604;
+			}
+			#sp
+			{
+				font-size: 60px;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outer"><span id="time">00:00:00</span><span style="font-size:40px;position: fixed;left:885px;top:240px;" id="sp"></span></div>
+		<center><div id="line"></div></center>
+		<script type="text/javascript">
+			function myFun()
+			{
+				var d=new Date();
+				var h=d.getHours();
+				var m=d.getMinutes();
+				var s=d.getSeconds();
+				var a=document.getElementById("sp");
+				if(h<10)
+					{
+						h="0"+h;
+						document.getElementById("time").innerHTML=h+":"+m+":"+s;
+					}
+				if(m<10)
+				{
+					m="0"+m;
+					document.getElementById("time").innerHTML=h+":"+m+":"+s;
+				}
+				if(s<10)
+				{
+					s="0"+s;
+					document.getElementById("time").innerHTML=h+":"+m+":"+s;
+				}
+				if(h>=12)
+				{
+					h=(h-12);
+					a.innerText="PM"
+					document.getElementById("time").innerHTML=h+":"+m+":"+s;
+					if(h<10)
+					{
+						h="0"+h;
+						document.getElementById("time").innerHTML=h+":"+m+":"+s;
+					}
+				}
+				else
+				{
+					a.innerText="AM"
+					document.getElementById("time").innerHTML=h+":"+m+":"+s;
+				}
+			}
+			window.setInterval("myFun()",1000);
+		</script>
+	</body>
+</html>
